@@ -101,21 +101,16 @@ function TodoPage({ name }) {
             {lists
               .find((l) => l.name === currentList.name)
               ?.tasks.map((task, i) => (
-                <li key={i}>
-                  <input
+                <li key={i} className="task-item">
+                <label className="task-label">
+                    <input
                     type="checkbox"
                     checked={task.done}
                     onChange={() => toggleTask(task.text)}
-                  />
-                  <span
-                    style={{
-                      textDecoration: task.done ? "line-through" : "none",
-                      marginLeft: "0.5rem",
-                    }}
-                  >
-                    {task.text}
-                  </span>
-                  <button onClick={() => deleteTask(task.text)}>X</button>
+                    />
+                    <span className={task.done ? "done" : ""}>{task.text}</span>
+                </label>
+                <button className="delete-btn" onClick={() => deleteTask(task.text)}>X</button>
                 </li>
               ))}
           </ul>
